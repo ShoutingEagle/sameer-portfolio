@@ -1,27 +1,31 @@
 import { FaEnvelope, FaPhoneAlt, FaLinkedin } from "react-icons/fa";
+import { BsWhatsapp } from "react-icons/bs";
 
 const Footer = () => {
   return (
-    <footer className="bg-black text-white py-10 px-6 sm:px-10 font-abel">
+    <footer className="bg-black text-white py-10 px-6 sm:px-10 font-barlow">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between gap-8">
         {/* Contact Info */}
         <div className="space-y-4 md:w-1/3">
           <h3 className="text-xl font-semibold mb-2">Contact</h3>
-          <p className="flex items-center gap-3">
-            <FaEnvelope /> sameerpaul58@gmail.com
+          <p className="flex items-center gap-3 ">
+            <FaEnvelope className="text-red-800"/> sameerpaul58@gmail.com
           </p>
           <p className="flex items-center gap-3">
-            <FaPhoneAlt /> 6206382019 (WhatsApp)
+            <FaPhoneAlt className="text-yellow-500"/> 6206382019 
           </p>
           <p className="flex items-center gap-3">
-            <FaLinkedin />
+            <BsWhatsapp className="text-green-700"/> 6206382019 
+          </p>
+          <p className="flex items-center gap-3">
+            <FaLinkedin className="text-blue-800"/>
             <a
-              href="https://www.linkedin.com/in/sameer-paul-03a846256"
+              href="https://www.linkedin.com/in/sameerpaul239421233"
               target="_blank"
               rel="noopener noreferrer"
               className="underline hover:text-gray-400"
             >
-              linkedin.com/in/sameer-paul-03a846256
+              linkedin.com/in/sameerpaul239421233
             </a>
           </p>
         </div>
@@ -51,24 +55,6 @@ const Footer = () => {
               </a>
             </li>
           </ul>
-        </div>
-
-        {/* Social / Other */}
-        <div className="space-y-4 md:w-1/3">
-          <h3 className="text-xl font-semibold mb-2">Follow Me</h3>
-          <div className="flex space-x-4 text-2xl">
-            <a
-              href="https://www.linkedin.com/in/sameer-paul-03a846256"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-gray-400"
-              aria-label="LinkedIn"
-            >
-              <FaLinkedin />
-            </a>
-            {/* Add more social icons here if you want */}
-          </div>
-
         </div>
       </div>
     </footer>

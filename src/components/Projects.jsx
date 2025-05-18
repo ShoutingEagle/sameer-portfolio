@@ -1,6 +1,9 @@
 import { useContext, useEffect } from 'react';
 import { ComponentContext } from '../App';
-import cryptoTracker from "../assets/asset-project-crypto-tracker.png"
+import cryptoTracker from "../assets/asset-project-crypto-tracker.jpg";
+import { SlSocialGithub } from "react-icons/sl";
+import { FaEarthAsia } from "react-icons/fa6";
+
 
 const projects = [
   {
@@ -10,7 +13,7 @@ const projects = [
     status: "Completed",
     codeLink: "https://github.com/your-blog-repo",
     liveLink: "https://your-blog-live.com",
-    screenshot: "/blog-project.jpg",
+    screenshot: cryptoTracker,
   },
   {
     title: "Crypto Tracker",
@@ -28,84 +31,89 @@ const projects = [
     status: "In Progress",
     codeLink: "https://github.com/your-shop-repo",
     liveLink: "https://your-shop-live.com",
-    screenshot: "/shopcart-project.jpg",
+    screenshot: cryptoTracker,
   },
 ];
 
 const Projects = () => {
-const {state,dispatch} = useContext(ComponentContext)
-useEffect(() => {
-  const handleScroll = () => {
-    const element = document.getElementById("projects");
-    const top = element.getBoundingClientRect().top;
+  const { state, dispatch } = useContext(ComponentContext);
 
-    if (top >=0 && top < window.innerHeight / 2) {
-      dispatch({ type: "SET_IN_VIEW", payload: "projects" });
-    }
-  };
+  useEffect(() => {
+    const handleScroll = () => {
+      const element = document.getElementById("projects");
+      const top = element.getBoundingClientRect().top;
+      if (top >= 0 && top < window.innerHeight / 2) {
+        dispatch({ type: "SET_IN_VIEW", payload: "projects" });
+      }
+    };
 
-  window.addEventListener("scroll", handleScroll);
-  return () => window.removeEventListener("scroll", handleScroll);
-}, []);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
   return (
-    <section 
-    id='projects'
-    className="min-h-screen bg-[#e0e0e0] flex justify-start items-center font-abel border-t border-gray-300 px-6">
-
-
-      <div className='flex flex-col justify-center items-center'>
-        <h2 className="xl:text-3xl 2xl:text-4xl font-semibold mb-10 text-gray-800">Projects</h2>
-
-        <div className="flex overflow-x-auto space-x-8 scrollbar-thin scrollbar-thumb-gray-400 py-4">
+    <section id='projects' className="w-full bg-[#e0e0e0] md:pl-[3rem] xl:pl-[10rem] border-t border-gray-300 py-20">
+      <div className="">
+        <h2 className="text-3xl md:text-3xl xl:text-4xl font-normal text-center mb-12 text-gray-400 font-barlow">Projects</h2>
+        <div className="flex flex-col gap-40 md:gap-20 xl:gap-40">
           {projects.map((project, index) => (
-            <div
-              key={index}
-              className="xl:w-xs 2xl:w-sm bg-[#c0c0c0] shadow-lg p-6 flex-shrink-0 "
-            >
-              {/* Project Screenshot */}
-              <img
-                src={project.screenshot}
-                alt={`${project.title} screenshot`}
-                className="w-full xl:h-42 2xl:h-52 object-cover rounded-lg mb-5"
-              />
+            <div key={index} className="flex flex-row p-5 gap:5 md:gap-10 xl:gap-20">
+              {/* Left - Image */}
+              <div className="w-[350px] md:w-[250px] rounded-xl overflow-hidden">
+                <img
+                  src={project.screenshot}
+                  alt={project.title}
+                  className="w-full h-full object-cover"
+                />
+              </div>
 
-              {/* Content */}
-              <div className="space-y-4">
-                <div className="flex justify-between items-center">
-                  <h3 className="md:text-xl 2xl:text-2xl font-bold text-gray-900">{project.title}</h3>
-                  <span
-                    className={`text-sm font-semibold px-4 py-1 ${
-                      project.status === "Completed"
-                        ? "bg-green-600 text-white"
-                        : "bg-yellow-500 text-white"
-                    }`}
-                  >
-                    {project.status}
-                  </span>
+              {/* Right - Details */}
+              <div className="md:w-1/2 p-6 flex flex-col gap-10 font-barlow text-gray-500">
+                <div>
+                  <div className="flex flex-col items-start md:flex-row gap-3 md:gap-10 items-center mb-2">
+                    <h3 className="text-4xl font-normal text-black">{project.title}</h3>
+                    <span className={`text-md px-0 md:px-3 py-1 `}>
+                      <span>Status: </span><span className={` ${project.status === "Completed"?"text-green-600":"text-red-500"}`}>{project.status}</span> 
+                    </span>
+                  </div>
+
+                  <p className="flex flex-col mb-4">
+                    <span className="text-xl text-gray-800">At a Glance</span>
+                    <span className="">{project.description}</span>
+                  </p>
+                  <p className="text-md mb-4">
+                    <span className="text-gray-800">Built with:</span> {project.builtWith}
+                  </p>
+                  <div className="flex flex-col md:flex-row gap-5 xl:gap-20 text-black">
+                    <p>Solo Project</p>
+                    <p className="flex md:flex-col gap-5">
+                      <span>My Role</span>
+                      <span className="text-gray-400">Product Design | Virtual Design | User Research</span>
+                    </p>
+                    <p className="flex md:flex-col gap-5">
+                      <span>Timeline</span>
+                      <span className="text-gray-400">March 2025 - May 2025</span>
+                    </p>
+                  </div>
                 </div>
 
-                <p className="md:text-sm 2xl:text-base text-gray-700">{project.description}</p>
-
-                <p className="md:text-sm 2xl:text-base text-gray-900 font-medium">
-                  Built with: <span className="font-normal">{project.builtWith}</span>
-                </p>
-
-                <div className="flex gap-4 pt-3">
+                <div className="flex gap-10">
                   <a
                     href={project.codeLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-base bg-black text-white px-5 py-2 rounded hover:bg-gray-800 transition"
+                    className="flex flex-row justify-center items-center gap-2 group"
                   >
-                    View Code
+                    <span className="group-hover:text-blue-600 transition-colors duration-200"><SlSocialGithub /></span>
+                    <span className="group-hover:text-blue-600 transition-colors duration-200">Source Code</span>
                   </a>
                   <a
                     href={project.liveLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-base bg-black text-white px-5 py-2 rounded hover:bg-gray-800 transition"
+                    className={`flex flex-row justify-center items-center gap-2 group ${project.status === "Completed"?"flex":"hidden"}`}
                   >
-                    Live Demo
+                    <span className="group-hover:text-red-500 transition-colors duration-200"><FaEarthAsia /></span>
+                    <span className="group-hover:text-red-500 transition-colors duration-200">Live Demo</span>
                   </a>
                 </div>
               </div>
