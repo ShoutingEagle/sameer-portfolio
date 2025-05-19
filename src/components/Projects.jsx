@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from 'react';
 import { ComponentContext } from '../App';
+import brokenImage from "../assets/broken-image.png"
 import cryptoTrackerPc from "../assets/asset-project-crypto-tracker.jpg";
 import cryptoTrackerMobile from "../assets/asset-crypto-tracker-wide.jpg";
 import { SlSocialGithub } from "react-icons/sl";
@@ -14,8 +15,8 @@ const projects = [
     status: "Completed",
     codeLink: "https://github.com/your-blog-repo",
     liveLink: "https://your-blog-live.com",
-    screenshot: cryptoTrackerPc,
-    mobile: cryptoTrackerMobile,
+    screenshot: "na",
+    mobile: "na",
     timeline: "March25 - May25"
   },
   {
@@ -36,8 +37,8 @@ const projects = [
     status: "In Progress",
     codeLink: "https://github.com/your-shop-repo",
     liveLink: "https://your-shop-live.com",
-    screenshot: cryptoTrackerPc,
-    mobile: cryptoTrackerMobile,
+    screenshot: "na",
+    mobile: "na",
     timeline: "February25 - Live"
   },
 ];
@@ -92,12 +93,25 @@ const Projects = () => {
             {projects.map((project, index) => (
               <div key={index} className="flex flex-row p-5 gap:5 md:gap-10 xl:gap-20">
                 {/* Left - Image */}
-                <div className="w-[350px] md:w-[250px] rounded-xl overflow-hidden">
-                  <img
-                    src={project.screenshot}
-                    alt={project.title}
-                    className="w-full h-full object-cover"
+                <div className="w-[350px] md:w-[250px] rounded-xl overflow-hidden bg-gray-500">
+                  {
+                    project.screenshot==="na"?
+                    <div className='flex flex-col justify-center items-center gap-5 w-full h-full text-gray-800'>
+                      <img
+                        src={brokenImage}
+                        alt={project.title}
+                        className={`w-[50px]`}
+                      />
+                      <p>
+                        Preview Currently Unavailable
+                      </p>
+                    </div>:
+                    <img
+                      src={project.screenshot}
+                      alt={project.title}
+                      className={`w-full h-full object-cover`}
                   />
+                  }
                 </div>
 
                 {/* Right - Details */}
