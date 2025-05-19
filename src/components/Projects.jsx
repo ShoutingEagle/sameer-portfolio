@@ -82,9 +82,6 @@ const Projects = () => {
     }, []);
     return (
     <section id='projects' className="w-full bg-[#e0e0e0] md:pl-[3rem] xl:pl-[10rem] border-t border-gray-300 py-20">
-      <p>
-        Your Width is {screenSize.width} and Your Height is {screenSize.height}
-      </p>
       {
         screenSize?.width>640 ? 
         <div className="">
