@@ -36,7 +36,8 @@ const Navbar = () => {
       </div>
 
       {menuOpen && (
-        <div className="fixed top-15 left-0 w-full bg-white shadow-md flex flex-col items-center z-50 md:hidden ">
+        <div className="fixed top-15 left-0 w-full bg-white shadow-md flex flex-col items-center z-50 md:hidden p-5">
+          
           {navItems.map(({ id, label }) => (
             <p
               key={id}
@@ -48,6 +49,8 @@ const Navbar = () => {
               {label}
             </p>
           ))}
+
+          <a href={resume} download className="bg-black w-full text-white p-2 text-center">Download Resume</a>
         </div>
       )}
 

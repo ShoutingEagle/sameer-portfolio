@@ -9,9 +9,8 @@ import Contact from './components/Contact.jsx'
 
 export const ComponentContext = createContext()
 function App() {
-
   const initialState = {
-    inView : "hero"
+    inView : "hero",
   }
 
   const reducer = (state,action) => {

@@ -27,7 +27,7 @@ const About = () => {
           About Me
         </h2>
 
-        <div className="space-y-8 text-sm sm:text-md leading-relaxed sm:leading-loose text-justify font-normal">
+        <div className="space-y-8 text-sm sm:text-lg leading-relaxed sm:leading-loose text-justify font-normal">
           <p>
             <span className="font-semibold text-black">Hi, I'm Sameer Paul</span> — a frontend developer with a deep passion for creating interactive and meaningful web experiences using{" "}
             <span className="text-blue-600 text-xl sm:text-2xl">React</span> and the{" "}

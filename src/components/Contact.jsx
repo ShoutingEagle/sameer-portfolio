@@ -72,9 +72,9 @@ const contactDetails = [
             <p className='text-2xl text-gray-800'>Contact Information</p>
             <div className='flex flex-col gap-5'>
               {
-                contactDetails.map((details) => {
+                contactDetails.map((details,index) => {
                   return (
-                    <a href={details.href} className={`flex items-center gap-5 text-gray-500 ${details.type}`}>
+                    <a href={details.href} className={`flex items-center gap-5 text-gray-500 ${details.type}`} key={index}>
                       <p className={`border rounded-full p-4 text-xl ${details.type}-outline`}>{details.component}</p>
                       <div className='flex flex-col'>
                         <span className=''>{details.label}</span>{" "}
