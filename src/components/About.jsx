@@ -45,8 +45,9 @@ const About = () => {
             <span className="text-yellow-600 text-xl sm:text-2xl">HTML</span>,{" "}
             <span className="text-pink-600 text-xl sm:text-2xl">CSS</span>, and{" "}
             <span className="text-blue-500 text-xl sm:text-2xl">JavaScript</span>, eventually discovering the joy of building apps with{" "}
-            <span className="text-purple-700 text-xl sm:text-2xl">React</span>. Since then, I’ve been on a mission to become a full-stack developer.
+            <span className="text-purple-700 text-xl sm:text-2xl">React</span>. Since then, I’ve been on a mission to become a full-stack developer, and eventually joined AccioJob for further learning.
           </p>
+
 
           <p>
             Today, I’m focused on developing scalable, responsive apps and continuously improving my skills in{" "}
@@ -56,8 +57,9 @@ const About = () => {
           </p>
 
           <p>
-            When I’m not coding, I’m probably exploring new technologies, contributing to open-source, or connecting with developers across communities. I’m always excited to collaborate, learn, and build.
+            When I’m not coding, I’m usually exploring new technologies, watching tech content, or experimenting with side projects. I enjoy learning by doing and constantly pushing my skills forward through hands-on practice.
           </p>
+
         </div>
       </div>
     </section>
