@@ -78,8 +78,8 @@ const Projects = () => {
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-  return (
+    }, []);
+    return (
     <section id='projects' className="w-full bg-[#e0e0e0] md:pl-[3rem] xl:pl-[10rem] border-t border-gray-300 py-20">
       {
         screenSize?.width>640 ? 
@@ -157,9 +157,9 @@ const Projects = () => {
           <h2 className="text-3xl font-normal text-center mb-12 text-gray-400 font-barlow">Projects</h2>
           <div className="flex flex-col gap-40">
             {projects.map((project, index) => (
-                <div key={index} className="flex flex-col justify-center items-center p-5 gap-10 ">
+                <div key={index} className="flex flex-col justify-center items-start gap-10 p-5">
                   {/* top - Image */}
-                  <div className="w-[320px] rounded-sm overflow-hidden">
+                  <div className="w-[350] xss:w-[400px] rounded-sm overflow-hidden">
                     <img
                       src={screenSize?.width<=640 ? project.mobile :project.screenshot}
                       alt={project.title}
