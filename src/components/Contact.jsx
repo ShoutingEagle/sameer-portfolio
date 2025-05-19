@@ -75,10 +75,10 @@ const contactDetails = [
                 contactDetails.map((details,index) => {
                   return (
                     <a href={details.href} className={`flex items-center gap-5 text-gray-500 ${details.type}`} key={index}>
-                      <p className={`border rounded-full p-4 text-xl ${details.type}-outline`}>{details.component}</p>
+                      <p className={`border rounded-full p-2 sm:p-4 text-md sm:text-xl ${details.type}-outline`}>{details.component}</p>
                       <div className='flex flex-col'>
                         <span className=''>{details.label}</span>{" "}
-                        <p  className="">
+                        <p  className="text-md xss:text-xl">
                           {details.value}
                         </p>
                       </div>

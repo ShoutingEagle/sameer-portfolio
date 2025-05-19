@@ -162,7 +162,7 @@ const Projects = () => {
             {projects.map((project, index) => (
                 <div key={index} className="flex flex-col justify-center items-start gap-10 p-5">
                   {/* top - Image */}
-                  <div className="w-[350] xss:w-[400px] rounded-sm overflow-hidden">
+                  <div className="w-full rounded-sm overflow-hidden">
                     <img
                       src={screenSize?.width<=640 ? project.mobile :project.screenshot}
                       alt={project.title}
