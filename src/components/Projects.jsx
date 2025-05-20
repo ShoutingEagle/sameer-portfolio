@@ -80,6 +80,7 @@ const Projects = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
     }, []);
+
     return (
     <section id='projects' className="w-full bg-[#e0e0e0] md:pl-[3rem] xl:pl-[10rem] border-t border-gray-300 py-20">
       {
@@ -173,12 +174,22 @@ const Projects = () => {
             {projects.map((project, index) => (
                 <div key={index} className="flex flex-col justify-center items-start gap-10 p-5">
                   {/* top - Image */}
-                  <div className="w-full rounded-sm overflow-hidden">
-                    <img
-                      src={screenSize?.width<=640 ? project.mobile :project.screenshot}
-                      alt={project.title}
-                      className="w-full h-full object-cover"
-                    />
+                  <div className={`w-full rounded-sm overflow-hidden ${project.screenshot==="na"?"w-full h-[160px] bg-gray-600":""}`}>
+                    {project.mobile === "na"?
+                      <div className='w-full h-full flex flex-col justify-center items-center'>
+                        <img
+                            src={brokenImage}
+                            alt={project.title}
+                            className="w-[40px]"
+                        />
+                        <p className='text-md'>Preview Currently Unavailable</p>
+                      </div>:
+                      <img
+                        src={project.mobile}
+                        alt={project.title}
+                        className="w-full h-full object-cover"
+                      />
+                    }
                   </div>
 
                   {/* bottom - Details */}
