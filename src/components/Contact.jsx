@@ -1,5 +1,6 @@
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import { ComponentContext } from '../App';
+import emailjs from "@emailjs/browser"
 import { LuPhoneCall } from "react-icons/lu";
 import { AiOutlineMail } from "react-icons/ai";
 import { BsWhatsapp } from "react-icons/bs";
@@ -8,6 +9,8 @@ import { FaPaperPlane } from "react-icons/fa";
 
 const Contact = () => {
 const {state,dispatch} = useContext(ComponentContext)
+const [isloading,setIsLoading] = useState(false)
+const formRef = useRef() 
 useEffect(() => {
   const handleScroll = () => {
     const element = document.getElementById("contact");
@@ -21,6 +24,8 @@ useEffect(() => {
   window.addEventListener("scroll", handleScroll);
   return () => window.removeEventListener("scroll", handleScroll);
 }, []);
+
+
 
 
 const contactDetails = [
@@ -54,6 +59,19 @@ const contactDetails = [
   }
 ];
 
+
+const sendEmail = async(e) => {
+  setIsLoading(true)
+  e.preventDefault()
+  try {
+    await emailjs.sendForm("service_hsi7w5w","template_2brg88d",formRef.current,"W2KVX2ijUclZtGu84")
+    formRef.current.reset()
+    
+  } catch (error) {
+    alert(`Failed to send message, Please try again. ${error.message}`)
+  }
+  setIsLoading(false)
+} 
 
   return (
     <section
@@ -92,28 +110,35 @@ const contactDetails = [
         </div>
 
         {/* Right: Contact Form */}
-        <form className="space-y-6">
+        <form ref={formRef} onSubmit={sendEmail} className="space-y-6">
           <p className='text-2xl text-gray-800'>Write me an Email</p>
           <input
             type="text"
             placeholder="Your Name"
+            name='name'
             required
+            disabled={isloading}
             className="w-full px-4 py-2 border border-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-700"
           />
           <input
             type="email"
             placeholder="Your Email"
+            name='email'
             required
+            disabled={isloading}
             className="w-full px-4 py-2 border border-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-700"
           />
           <textarea
             rows="5"
             placeholder="Your Message"
+            name='message'
             required
+            disabled={isloading}
             className="w-full px-4 py-2 border border-gray-400  resize-none focus:outline-none focus:ring-1 focus:ring-gray-700"
           ></textarea>
           <button
             type="submit"
+            disabled={isloading}
             className="flex flex-row justify-center items-center gap-3 bg-black text-white px-6 py-2 hover:bg-gray-800 transition"
           >
             <span>
