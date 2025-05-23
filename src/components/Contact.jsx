@@ -113,6 +113,11 @@ const sendEmail = async(e) => {
         <form ref={formRef} onSubmit={sendEmail} className="space-y-6">
           <p className='text-2xl text-gray-800'>Write me an Email</p>
           <input
+            type="hidden"
+            name="time"
+            value={new Date().toLocaleString()}
+          />
+          <input
             type="text"
             placeholder="Your Name"
             name='name'
