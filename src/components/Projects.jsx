@@ -11,10 +11,10 @@ const projects = [
   {
     title: "Blogging App",
     description: "A full-stack blogging platform where users can write, post, and comment on articles.",
-    builtWith: "React, Node.js, MongoDB",
+    builtWith: "React, Redux, Node.js, Express, Mongoose, Nodemailer",
     status: "Completed",
-    codeLink: "https://github.com/your-blog-repo",
-    liveLink: "https://your-blog-live.com",
+    codeLink: "https://github.com/ShoutingEagle/blogging_app",
+    liveLink: "https://gaminggeeks.vercel.app/",
     screenshot: "na",
     mobile: "na",
     timeline: "March25 - May25"
@@ -24,22 +24,22 @@ const projects = [
     description: "A real-time cryptocurrency tracker with interactive charts and watchlists.",
     builtWith: "React, Chart.js, CoinGecko API",
     status: "Completed",
-    codeLink: "https://github.com/your-crypto-repo",
-    liveLink: "https://your-crypto-live.com",
+    codeLink: "https://github.com/ShoutingEagle/CryptoTracker",
+    liveLink: "https://cryptotracker-dashboard-frontend.netlify.app/",
     screenshot: cryptoTrackerPc,
     mobile: cryptoTrackerMobile,
     timeline: "April24 - May25"
   },
   {
     title: "ShopCart",
-    description: "An e-commerce platform with cart, filters, and Stripe integration.",
-    builtWith: "React, Redux, Node.js, Stripe",
-    status: "In Progress",
-    codeLink: "https://github.com/your-shop-repo",
-    liveLink: "https://your-shop-live.com",
+    description: "Planning a feature-rich e-commerce platform with category filters, cart system, and user/seller authentication.",
+    builtWith: "React, Redux, Node.js, Express, Mongoose",
+    status: "In Planning",
+    codeLink: false,
+    liveLink: false,
     screenshot: "na",
     mobile: "na",
-    timeline: "February25 - Live"
+    timeline: "In Planning"
   },
 ];
 
@@ -143,24 +143,31 @@ const Projects = () => {
                   </div>
 
                   <div className="flex gap-10">
-                    <a
-                      href={project.codeLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex flex-row justify-center items-center gap-2 group"
-                    >
-                      <span className="group-hover:text-blue-600 transition-colors duration-200"><SlSocialGithub /></span>
-                      <span className="group-hover:text-blue-600 transition-colors duration-200">Source Code</span>
-                    </a>
-                    <a
-                      href={project.liveLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={`flex flex-row justify-center items-center gap-2 group ${project.status === "Completed"?"flex":"hidden"}`}
-                    >
-                      <span className="group-hover:text-red-500 transition-colors duration-200"><FaEarthAsia /></span>
-                      <span className="group-hover:text-red-500 transition-colors duration-200">Live Demo</span>
-                    </a>
+                    {
+                      project.liveLink || project.codeLink?
+                      <>
+                          {project.codeLink && <a
+                            href={project.codeLink}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex flex-row justify-center items-center gap-2 group"
+                          >
+                            <span className="group-hover:text-blue-600 transition-colors duration-200"><SlSocialGithub /></span>
+                            <span className="group-hover:text-blue-600 transition-colors duration-200">Source Code</span>
+                          </a>}
+                          {project.liveLink && <a
+                            href={project.liveLink}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={`flex flex-row justify-center items-center gap-2 group ${project.status === "Completed"?"flex":"hidden"}`}
+                          >
+                            <span className="group-hover:text-red-500 transition-colors duration-200"><FaEarthAsia /></span>
+                            <span className="group-hover:text-red-500 transition-colors duration-200">Live Demo</span>
+                          </a>}
+                          </> :
+                          ""
+                    }
+                    
                   </div>
                 </div>
               </div>
@@ -223,24 +230,35 @@ const Projects = () => {
                     </div>
 
                     <div className="flex gap-10">
-                      <a
-                        href={project.codeLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex flex-row justify-center items-center gap-2 group"
-                      >
-                        <span className="group-hover:text-blue-600 transition-colors duration-200"><SlSocialGithub /></span>
-                        <span className="group-hover:text-blue-600 transition-colors duration-200">Source Code</span>
-                      </a>
-                      <a
-                        href={project.liveLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={`flex flex-row justify-center items-center gap-2 group ${project.status === "Completed"?"flex":"hidden"}`}
-                      >
-                        <span className="group-hover:text-red-500 transition-colors duration-200"><FaEarthAsia /></span>
-                        <span className="group-hover:text-red-500 transition-colors duration-200">Live Demo</span>
-                      </a>
+                      {project.codeLink || project.liveLink ? 
+                      "" : 
+                      (
+                        <>
+                          {project.codeLink && (
+                            <a
+                              href={project.codeLink}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="flex flex-row justify-center items-center gap-2 group"
+                            >
+                              <span className="group-hover:text-blue-600 transition-colors duration-200"><SlSocialGithub /></span>
+                              <span className="group-hover:text-blue-600 transition-colors duration-200">Source Code</span>
+                            </a>
+                          )}
+                          {project.liveLink && (
+                            <a
+                              href={project.liveLink}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="flex flex-row justify-center items-center gap-2 group"
+                            >
+                              <span className="group-hover:text-red-500 transition-colors duration-200"><FaEarthAsia /></span>
+                              <span className="group-hover:text-red-500 transition-colors duration-200">Live Demo</span>
+                            </a>
+                          )}
+                        </>
+                      )}
+
                     </div>
                   </div>
                 </div>
